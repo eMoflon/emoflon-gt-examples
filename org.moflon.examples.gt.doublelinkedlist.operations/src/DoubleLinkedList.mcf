@@ -1,0 +1,23 @@
+import "platform:/resource/org.moflon.examples.gt.doublelinkedlist.model/model/Model.ecore"
+
+using "DoubleLinkedList.mpt"
+
+package org.moflon.demo.mgt.doublelinkedlistmodel
+
+class Node{
+   operation deleteNode() : void {
+      this : Node
+      invoke NodePatterns::deleteNode(this)
+      deleteNode()
+      return
+   }
+
+   operation insertNodeAfter(newNode : Node) : void {
+   	  newNode.insertNodeBefore(this : Node)
+      invoke NodePatterns::insertNodeAfter(this : Node, newNode)
+   }
+
+   operation insertNodeBefore(newNde : Node) : void {
+      invoke NodePatterns::insertNodeBefore(newNde, this:Node)
+   }
+}
